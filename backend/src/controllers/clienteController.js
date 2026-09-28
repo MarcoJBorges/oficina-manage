@@ -46,9 +46,21 @@ async function atualizarCliente(req, res) {
     });
 }
 
+async function deletarCliente(req, res) {
+
+    const id = Number(req.params.id);
+
+    const resultado = await clienteService.deletarCliente(id);
+
+    return res.status(200).json({
+        dados: resultado
+    });
+}
+
 module.exports = {
     criarCliente,
     listarClientes,
     buscarClientePorId,
-    atualizarCliente
+    atualizarCliente,
+    deletarCliente
 }

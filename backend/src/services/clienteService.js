@@ -68,9 +68,25 @@ async function atualizarCliente(id, novosDados) {
     };
 }
 
+async function deletarCliente(id) {
+
+    if (!Number.isInteger(id) || id <= 0) {
+        throw new AppError("ID inválido", 400);
+    }
+
+    await buscarClienteOuFalhar(id);
+
+    await clienteModel.deletarCliente(id);
+
+    return {
+        mensagem: "Cliente removido com sucesso."
+    };
+}
+
 module.exports = {
     criarCliente,
     listarClientes,
     buscarClientePorId,
-    atualizarCliente
+    atualizarCliente,
+    deletarCliente
 };

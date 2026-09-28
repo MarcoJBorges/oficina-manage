@@ -30,4 +30,10 @@ router.put(
     asyncHandler(clienteController.atualizarCliente)
 );
 
+router.delete(
+    "/clientes/:id",
+    authMiddleware,
+    asyncHandler(clienteController.deletarCliente)
+);
+
 module.exports = router;
